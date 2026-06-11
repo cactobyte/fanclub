@@ -1,0 +1,11 @@
+# Large files
+*.pdf
+*.zip
+
+# macOS junk
+__MACOSX/
+.DS_Store
+
+# SendToLukas folder
+SendToLukas/
+SendToLukas.zip
