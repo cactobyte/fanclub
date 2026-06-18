@@ -9,3 +9,6 @@ __MACOSX/
 # SendToLukas folder
 SendToLukas/
 SendToLukas.zip
+
+# Local Netlify folder
+.netlify

@@ -31,7 +31,11 @@ const SVG = {
   zap:        `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
   ticket:     `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg>`,
   trophy:     `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"><polyline points="8 21 12 17 16 21"/><line x1="12" y1="17" x2="12" y2="11"/><path d="M7 4H4a2 2 0 0 0-2 2 5 5 0 0 0 5 5"/><path d="M17 4h3a2 2 0 0 1 2 2 5 5 0 0 1-5 5"/><rect x="7" y="4" width="10" height="7" rx="2"/></svg>`,
-  edit2:      `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`
+  edit2:      `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`,
+  connect:    `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+  connectFill:`<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+  send:       `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>`,
+  tv:         `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>`
 };
 
 // ======= STATE =======
@@ -48,6 +52,8 @@ const STATE = {
   fixtureFilter: 'all',
   profileTab: 'posts',
   communityTab: 'feed',
+  connectTab: 'chats',
+  activeChatId: null,
   articleLiked: false
 };
 
@@ -107,12 +113,21 @@ function navigate(page, params = {}, resetHistory = false) {
     // Push current page onto the history stack before navigating away
     STATE.pageHistory.push({ page: STATE.page, params: { ...STATE.params } });
   }
+  
+  // Clear active chat when navigating
+  STATE.activeChatId = null;
+
   STATE.page = page;
   STATE.params = params;
   performTransition();
 }
 
 function goBack() {
+  // Exit active chat if going back from it
+  if (STATE.page === 'connect' && STATE.activeChatId) {
+    STATE.activeChatId = null;
+  }
+
   if (STATE.pageHistory.length > 0) {
     // Pop the last page from the stack and restore it
     const prev = STATE.pageHistory.pop();
@@ -153,7 +168,7 @@ function performTransition() {
 }
 
 function updateNav() {
-  const mainPages = ['home', 'explore', 'live', 'reward', 'profile'];
+  const mainPages = ['home', 'explore', 'connect', 'live', 'profile'];
   document.querySelectorAll('.nav-item').forEach(btn => {
     const isActive = btn.dataset.page === STATE.page ||
       (btn.dataset.page === 'home' && !mainPages.includes(STATE.page));
@@ -164,8 +179,9 @@ function updateNav() {
 // ======= HEADER =======
 function renderHeader() {
   const el = document.getElementById('app-header');
-  const subPages = ['club', 'community', 'article'];
-  if (subPages.includes(STATE.page)) {
+  const isSubPage = ['club', 'community', 'article'].includes(STATE.page) || 
+                    (STATE.page === 'connect' && STATE.activeChatId);
+  if (isSubPage) {
     let title = '';
     if (STATE.page === 'club') {
       const t = getTeam(STATE.params.teamId);
@@ -176,6 +192,9 @@ function renderHeader() {
       if (title.length > 22) title = title.substring(0, 20) + '…';
     } else if (STATE.page === 'article') {
       title = 'Article';
+    } else if (STATE.page === 'connect' && STATE.activeChatId) {
+      const conv = DATA.conversations.find(c => c.id === STATE.activeChatId);
+      title = conv ? conv.name : 'Chat';
     }
     el.innerHTML = `
       <div class="header-back-bar">
@@ -186,13 +205,13 @@ function renderHeader() {
   } else {
     el.innerHTML = `
       <div class="header-logo" onclick="navigate('home',{},true)" style="cursor:pointer">
-        <span class="logo-wordmark">FANCLUB</span>
+        <img src="logo.png" alt="FanClub" style="height:32px;width:auto;display:block">
       </div>
       <div class="header-actions">
         <button class="btn-icon-ghost" onclick="navigate('explore',{},true)" aria-label="Search">${SVG.search}</button>
-        <button class="btn-icon-ghost" style="position:relative" aria-label="Notifications">
+        <button class="btn-icon-ghost" style="position:relative" aria-label="Notifications" onclick="toggleNotifications()">
           ${SVG.bell}
-          <span class="notif-badge">3</span>
+          <span class="notif-badge" id="notif-badge">3</span>
         </button>
       </div>`;
   }
@@ -203,8 +222,8 @@ function renderNavIcons() {
   const icons = {
     home:    [SVG.home,    SVG.homeFill],
     explore: [SVG.explore, SVG.exploreFill],
+    connect: [SVG.connect, SVG.connectFill],
     live:    [SVG.live,    SVG.liveFill],
-    reward:  [SVG.reward,  SVG.rewardFill],
     profile: [SVG.profile, SVG.profileFill]
   };
   Object.entries(icons).forEach(([page, [off, on]]) => {
@@ -216,9 +235,18 @@ function renderNavIcons() {
 // ======= ROUTE =======
 function renderPage() {
   const container = document.getElementById('page-container');
+  
+  // Hide bottom nav on sub-pages
+  const bottomNav = document.getElementById('bottom-nav');
+  if (bottomNav) {
+    const isSubPage = ['club', 'community', 'article'].includes(STATE.page);
+    bottomNav.style.display = isSubPage ? 'none' : '';
+  }
+
   switch (STATE.page) {
     case 'home':      renderHome(container); break;
     case 'explore':   renderExplore(container); break;
+    case 'connect':   renderConnect(container); break;
     case 'live':      renderLive(container); break;
     case 'reward':    renderReward(container); break;
     case 'profile':   renderProfile(container); break;
@@ -342,6 +370,29 @@ function renderHome(container) {
     </div>
     <div style="height:16px"></div>`;
 
+  // ── Trending News ──
+  const trendingPosts = DATA.posts.filter(p => p.title).slice(0, 4);
+  const trendingHTML = trendingPosts.length ? `
+    <div class="section-header">
+      <span class="section-title">Trending News</span>
+      <button class="see-all" onclick="navigate('explore',{tab:'news'},true)">See All</button>
+    </div>
+    <div style="padding:0 16px;display:flex;flex-direction:column;gap:10px;margin-bottom:24px">
+      ${trendingPosts.map((p) => {
+        const community = getCommunity(p.communityId);
+        const tag = community ? community.name.split(' ').slice(0,2).join(' ') : 'Football';
+        const tagColor = p.teamId ? (getTeam(p.teamId)?.color || '#22c55e') : '#22c55e';
+        return `
+        <div class="news-card" onclick="navigate('article',{postId:'${p.id}'})">
+          <div class="news-card-body">
+            <span class="news-tag" style="background:${tagColor}22;color:${tagColor};border:1px solid ${tagColor}44">${tag}</span>
+            <div class="news-headline">${p.title}</div>
+            <div class="news-meta">${p.authorName} · ${p.timestamp}</div>
+          </div>
+        </div>`;
+      }).join('')}
+    </div>` : '';
+
   container.innerHTML = `
     <div class="home-page">
       ${heroHTML}
@@ -349,6 +400,7 @@ function renderHome(container) {
       ${liveScoresHTML}
       ${highlightsHTML}
       ${previewsHTML}
+      ${trendingHTML}
       <button class="fab" id="fab-create" aria-label="Create post">${SVG.plus}</button>
     </div>
   `;
@@ -626,9 +678,20 @@ function exploreNewsHTML() {
 }
 
 function exploreTeamsHTML() {
+  // Interleave national teams among clubs for a natural-looking shuffle
+  const nationals = DATA.teams.filter(t => t.league === 'International');
+  const clubs = DATA.teams.filter(t => t.league !== 'International');
+  const interleaved = [];
+  let ni = 0, ci = 0;
+  while (ci < clubs.length || ni < nationals.length) {
+    // Add 2-3 clubs, then a national team
+    const chunk = (interleaved.length % 9 < 6) ? 2 : 3;
+    for (let i = 0; i < chunk && ci < clubs.length; i++) interleaved.push(clubs[ci++]);
+    if (ni < nationals.length) interleaved.push(nationals[ni++]);
+  }
   return `
     <div style="padding:0 16px 16px">
-      ${DATA.teams.map(t => `
+      ${interleaved.map(t => `
         <div class="result-item" onclick="navigate('club',{teamId:'${t.id}'})">
           ${crest(t.id, 44)}
           <div class="result-info">
@@ -646,9 +709,18 @@ function exploreTeamsHTML() {
 }
 
 function exploreCommunitiesHTML() {
+  // Interleave local/WC chapters among regular communities
+  const special = DATA.communities.filter(c => c.category === 'Local Chapter' || c.category === 'World Cup');
+  const others = DATA.communities.filter(c => c.category !== 'Local Chapter' && c.category !== 'World Cup');
+  const interleaved = [];
+  let si = 0, oi = 0;
+  while (oi < others.length || si < special.length) {
+    for (let i = 0; i < 2 && oi < others.length; i++) interleaved.push(others[oi++]);
+    if (si < special.length) interleaved.push(special[si++]);
+  }
   return `
     <div style="padding:0 16px 16px">
-      ${DATA.communities.map(c => `
+      ${interleaved.map(c => `
         <div class="result-item" onclick="navigate('community',{communityId:'${c.id}'})">
           <div class="crest-circle" style="width:44px;height:44px;background:${c.color};font-size:18px;">
             ${SVG.users}
@@ -665,6 +737,208 @@ function exploreCommunitiesHTML() {
       `).join('')}
     </div>
   `;
+}
+
+// ==========================================
+//  CONNECT PAGE
+// ==========================================
+function renderConnect(container) {
+  // If a chat is open, show the chat view instead
+  if (STATE.activeChatId) {
+    renderChatView(container, STATE.activeChatId);
+    return;
+  }
+
+  const totalUnread = DATA.conversations.reduce((n, c) => n + c.unread, 0);
+
+  function convIcon(c) {
+    if (c.type === 'dm') return avatar(c.name, 44, c.color);
+    return `<div class="crest-circle" style="width:44px;height:44px;background:${c.color};font-size:16px;flex-shrink:0">${c.type === 'community' ? SVG.users : SVG.connect}</div>`;
+  }
+
+  const chatsHTML = DATA.conversations.map(c => `
+    <div class="chat-list-item" onclick="openChat('${c.id}')">
+      <div style="position:relative;flex-shrink:0">
+        ${convIcon(c)}
+        ${c.unread ? `<div class="chat-unread-badge">${c.unread > 9 ? '9+' : c.unread}</div>` : ''}
+      </div>
+      <div class="chat-list-info">
+        <div class="chat-list-name">${c.name}</div>
+        <div class="chat-list-preview">${c.lastMessage}</div>
+      </div>
+      <div class="chat-list-time">${c.lastTime}</div>
+    </div>
+  `).join('');
+
+  const watchalongHTML = DATA.watchalongs.map(w => `
+    <div class="watchalong-card" onclick="navigate('community',{communityId:'${w.communityId}'})">
+      <div class="wa-header" style="background:linear-gradient(135deg,${w.color}44,#1e1e1e)">
+        <div class="wa-competition">
+          <span class="wa-comp-tag" style="background:${w.competitionColor}">${w.competition}</span>
+          <span class="wa-date">${w.date}</span>
+        </div>
+        <div class="wa-teams">
+          <span class="wa-team-name">${w.homeTeam}</span>
+          <span class="wa-result ${w.homeWin ? 'win' : 'draw'}">${w.result}</span>
+          <span class="wa-team-name">${w.awayTeam}</span>
+        </div>
+      </div>
+      <div class="wa-stats">
+        <div class="wa-stat">
+          ${SVG.users}
+          <div>
+            <div class="wa-stat-value">${fmtNum(w.viewers)}</div>
+            <div class="wa-stat-label">Fans watched</div>
+          </div>
+        </div>
+        <div class="wa-stat">
+          ${SVG.fire}
+          <div>
+            <div class="wa-stat-value">${w.atmosphereRating}/10</div>
+            <div class="wa-stat-label">Atmosphere</div>
+          </div>
+        </div>
+        <div class="wa-stat">
+          ${SVG.zap}
+          <div>
+            <div class="wa-stat-value">${fmtNum(w.peakViewers)}</div>
+            <div class="wa-stat-label">Peak viewers</div>
+          </div>
+        </div>
+      </div>
+      <div class="wa-highlights">
+        ${w.highlights.map(h => `<span class="wa-highlight-chip">⚽ ${h}</span>`).join('')}
+      </div>
+    </div>
+  `).join('');
+
+  container.innerHTML = `
+    <div class="connect-page">
+      <div class="connect-header">
+        <div class="connect-title-row">
+          <span class="section-title">Inbox</span>
+          ${totalUnread ? `<span class="connect-unread-total">${totalUnread} new</span>` : ''}
+        </div>
+        <div class="tabs-row" style="padding:8px 0 0">
+          <button class="tab-pill ${STATE.connectTab==='chats'?'active':''}" onclick="setConnectTab('chats')">💬 Chats</button>
+          <button class="tab-pill ${STATE.connectTab==='watchalongs'?'active':''}" onclick="setConnectTab('watchalongs')">📺 Watchalongs</button>
+        </div>
+      </div>
+
+      <div id="connect-tab-content">
+        ${STATE.connectTab === 'chats' ? `<div class="chat-list">${chatsHTML}</div>` : `<div class="watchalong-list" style="padding:12px 16px 24px">${watchalongHTML}</div>`}
+      </div>
+    </div>
+  `;
+}
+
+function setConnectTab(tab) {
+  STATE.connectTab = tab;
+  renderPage();
+}
+
+function openChat(convId) {
+  STATE.activeChatId = convId;
+  // push connect onto history so back works
+  STATE.pageHistory.push({ page: 'connect', params: {} });
+  
+  // Hide bottom nav in chat view
+  const bottomNav = document.getElementById('bottom-nav');
+  if (bottomNav) bottomNav.style.display = 'none';
+
+  renderChatView(document.getElementById('page-container'), convId);
+  // update header to show back button
+  const el = document.getElementById('app-header');
+  const conv = DATA.conversations.find(c => c.id === convId);
+  el.innerHTML = `
+    <div class="header-back-bar">
+      <button class="btn-icon-ghost" onclick="closeChat()" aria-label="Go back">${SVG.back}</button>
+      <span class="header-back-title">${conv ? conv.name : 'Chat'}</span>
+      <button class="btn-icon-ghost" style="opacity:0;pointer-events:none">${SVG.back}</button>
+    </div>`;
+}
+
+function closeChat() {
+  STATE.activeChatId = null;
+  STATE.pageHistory.pop(); // remove the connect entry we pushed
+  performTransition();
+}
+
+function renderChatView(container, convId) {
+  const conv = DATA.conversations.find(c => c.id === convId);
+  if (!conv) { container.innerHTML = '<div style="padding:20px;color:#a1a1aa">Chat not found</div>'; return; }
+
+  const messagesHTML = conv.messages.map(m => `
+    <div class="msg-row ${m.isMe ? 'msg-row-me' : 'msg-row-them'}">
+      ${!m.isMe ? `<div class="msg-avatar">${avatar(m.sender, 28)}</div>` : ''}
+      <div class="msg-bubble-wrap">
+        ${!m.isMe ? `<div class="msg-sender">${m.sender}</div>` : ''}
+        <div class="msg-bubble ${m.isMe ? 'msg-bubble-me' : 'msg-bubble-them'}">${m.text}</div>
+        <div class="msg-time">${m.time}</div>
+      </div>
+    </div>
+  `).join('');
+
+  container.innerHTML = `
+    <div class="chat-view">
+      <div class="chat-messages" id="chat-messages">
+        ${messagesHTML}
+      </div>
+      <div class="chat-input-bar">
+        <input class="chat-input" id="chat-msg-input" placeholder="Message..." autocomplete="off">
+        <button class="chat-send-btn" onclick="sendChatMessage('${convId}')">${SVG.send}</button>
+      </div>
+    </div>
+  `;
+
+  // Scroll to bottom
+  setTimeout(() => {
+    const msgs = document.getElementById('chat-messages');
+    if (msgs) msgs.scrollTop = msgs.scrollHeight;
+  }, 50);
+
+  // Enter key to send
+  const input = document.getElementById('chat-msg-input');
+  if (input) {
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChatMessage(convId); }
+    });
+  }
+}
+
+function sendChatMessage(convId) {
+  const input = document.getElementById('chat-msg-input');
+  const text = input ? input.value.trim() : '';
+  if (!text) return;
+
+  const conv = DATA.conversations.find(c => c.id === convId);
+  if (!conv) return;
+
+  const newMsg = {
+    id: 'm-' + Date.now(),
+    sender: 'Me',
+    text,
+    time: new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
+    isMe: true
+  };
+  conv.messages.push(newMsg);
+  conv.lastMessage = text;
+  conv.lastTime = 'just now';
+
+  // Append the new bubble without full re-render
+  const msgs = document.getElementById('chat-messages');
+  if (msgs) {
+    const div = document.createElement('div');
+    div.className = 'msg-row msg-row-me';
+    div.innerHTML = `
+      <div class="msg-bubble-wrap">
+        <div class="msg-bubble msg-bubble-me">${text}</div>
+        <div class="msg-time">${newMsg.time}</div>
+      </div>`;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+  input.value = '';
 }
 
 // ==========================================
@@ -922,7 +1196,7 @@ function renderProfile(container) {
           <div class="profile-avatar-ring">
             <div class="profile-avatar-inner">JE</div>
           </div>
-          <button class="profile-edit-btn" onclick="showToast('Profile editing coming soon!')">${SVG.edit2} Edit Profile</button>
+          <button class="profile-edit-btn" onclick="openEditProfile()">${SVG.edit2} Edit Profile</button>
         </div>
         <div class="profile-name">${u.name}</div>
         <div class="profile-username">${u.username}</div>
@@ -970,6 +1244,9 @@ function renderProfile(container) {
           <button class="profile-tab ${STATE.profileTab==='ranking'?'active':''}" onclick="setProfileTab('ranking')">Ranking</button>
         </div>
         <div id="profile-tab-content">${tabContent}</div>
+      </div>
+      <div style="text-align:center;padding:24px 0 12px;font-size:12px;color:var(--text-3);font-family:'Space Grotesk',sans-serif;letter-spacing:0.5px">
+        FanClub App · Version 1.0.14 (Cache-Busted)
       </div>
     </div>
   `;
@@ -1507,6 +1784,134 @@ function setupEvents() {
   });
 }
 
+// ======= EDIT PROFILE MODAL =======
+function openEditProfile() {
+  const u = DATA.currentUser;
+  const existing = document.getElementById('edit-profile-modal');
+  if (existing) existing.remove();
+
+  const modal = document.createElement('div');
+  modal.id = 'edit-profile-modal';
+  modal.className = 'modal-overlay';
+  modal.innerHTML = `
+    <div class="modal-sheet" id="edit-modal-sheet" style="max-height:85vh;overflow-y:auto">
+      <div class="modal-handle"></div>
+      <div class="modal-header">
+        <span class="modal-title">Edit Profile</span>
+        <button class="btn-icon-ghost" onclick="closeEditProfile()" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body" style="padding:0 20px 24px">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:16px 0 20px">
+          <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#22c55e,#16a34a);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;color:#000;margin-bottom:10px">JE</div>
+          <button style="font-size:13px;font-weight:600;color:var(--accent)" onclick="showToast('Photo upload coming soon!')">Change Photo</button>
+        </div>
+        <div class="edit-field-group">
+          <label class="edit-label">Display Name</label>
+          <input class="edit-input" id="ep-name" value="${u.name}" placeholder="Your name">
+        </div>
+        <div class="edit-field-group">
+          <label class="edit-label">Username</label>
+          <input class="edit-input" id="ep-username" value="${u.username}" placeholder="@username">
+        </div>
+        <div class="edit-field-group">
+          <label class="edit-label">Bio</label>
+          <textarea class="edit-input edit-textarea" id="ep-bio" placeholder="Tell fans about yourself...">${u.bio}</textarea>
+        </div>
+        <div class="edit-field-group">
+          <label class="edit-label">Favourite Team</label>
+          <div class="edit-select-row">
+            <div style="display:flex;align-items:center;gap:10px;flex:1;padding:12px 14px;background:var(--bg-elevated);border:1.5px solid var(--border-light);border-radius:var(--radius-md)">
+              <div class="crest-circle" style="width:28px;height:28px;background:linear-gradient(135deg,#EF0107,#8B0000);font-size:8px">ARS</div>
+              <span style="font-size:14px;color:var(--text-1);font-weight:500">Arsenal FC</span>
+            </div>
+            <button style="padding:12px;color:var(--text-3)" onclick="showToast('Team selection coming soon!')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+        <div style="height:16px"></div>
+        <button class="btn-primary" style="width:100%;padding:14px;font-size:15px" onclick="saveEditProfile()">Save Changes</button>
+      </div>
+    </div>`;
+
+  const app = document.querySelector('.app-shell') || document.body;
+  app.appendChild(modal);
+  setTimeout(() => modal.querySelector('#edit-modal-sheet').style.transform = 'translateY(0)', 10);
+  modal.addEventListener('click', e => { if (e.target === modal) closeEditProfile(); });
+}
+
+function closeEditProfile() {
+  const modal = document.getElementById('edit-profile-modal');
+  if (modal) modal.remove();
+}
+
+function saveEditProfile() {
+  const name = document.getElementById('ep-name')?.value.trim();
+  const bio  = document.getElementById('ep-bio')?.value.trim();
+  const uname = document.getElementById('ep-username')?.value.trim();
+  if (name) DATA.currentUser.name = name;
+  if (bio)  DATA.currentUser.bio  = bio;
+  if (uname) DATA.currentUser.username = uname;
+  closeEditProfile();
+  showToast('✓ Profile updated!');
+  if (STATE.page === 'profile') navigate('profile', {}, false);
+}
+
+// ======= NOTIFICATIONS PANEL =======
+const NOTIFS = [
+  { icon: '⚽', title: 'Arsenal scored!', body: 'Saka 67\' — Arsenal 2–1 Chelsea', time: '2m ago', color: '#EF0107' },
+  { icon: '🔔', title: 'New post in Arsenal FC', body: 'Arsenal_Alex posted: "Arteta is a genius..."', time: '8m ago', color: '#22c55e' },
+  { icon: '❤️', title: 'KopiteLad liked your post', body: '"Real Madrid vs Arsenal is the tie of the round"', time: '15m ago', color: '#ef4444' },
+  { icon: '👥', title: 'Red Devils Jakarta joined', body: '2 friends joined Red Devils Jakarta', time: '1h ago', color: '#DA291C' },
+  { icon: '🏆', title: 'UCL Quarter-Final starts soon', body: 'Real Madrid vs Arsenal · 20:00 tonight', time: '2h ago', color: '#1E3A8A' },
+];
+
+function toggleNotifications() {
+  const existing = document.getElementById('notif-panel');
+  if (existing) { existing.remove(); return; }
+
+  const panel = document.createElement('div');
+  panel.id = 'notif-panel';
+  panel.className = 'notif-panel';
+  panel.innerHTML = `
+    <div class="notif-panel-header">
+      <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:var(--text-1)">Notifications</span>
+      <button style="font-size:12px;font-weight:600;color:var(--accent)" onclick="clearNotifications()">Clear all</button>
+    </div>
+    ${NOTIFS.map(n => `
+      <div class="notif-item" onclick="dismissNotif(this)">
+        <div class="notif-icon-wrap" style="background:${n.color}22">${n.icon}</div>
+        <div class="notif-text">
+          <div class="notif-title">${n.title}</div>
+          <div class="notif-body">${n.body}</div>
+          <div class="notif-time">${n.time}</div>
+        </div>
+      </div>`).join('')}
+  `;
+
+  const appShell = document.querySelector('.app-shell');
+  appShell.insertBefore(panel, appShell.firstChild);
+
+  // hide badge
+  const badge = document.getElementById('notif-badge');
+  if (badge) badge.style.display = 'none';
+
+  // close on outside click
+  setTimeout(() => {
+    document.addEventListener('click', function handler(e) {
+      if (!panel.contains(e.target) && !e.target.closest('[aria-label="Notifications"]')) {
+        panel.remove();
+        document.removeEventListener('click', handler);
+      }
+    });
+  }, 100);
+}
+
+function dismissNotif(el) { el.style.opacity='0'; el.style.height=el.offsetHeight+'px'; el.style.transition='all 0.25s'; setTimeout(()=>{el.style.height='0';el.style.padding='0';el.style.margin='0';setTimeout(()=>el.remove(),250)},50); }
+function clearNotifications() { const p=document.getElementById('notif-panel'); if(p)p.remove(); }
+
 // ======= BOOT =======
 function boot() {
   initState();
@@ -1521,11 +1926,11 @@ function boot() {
     const icons = {
       home:    [SVG.home,    SVG.homeFill],
       explore: [SVG.explore, SVG.exploreFill],
+      connect: [SVG.connect, SVG.connectFill],
       live:    [SVG.live,    SVG.liveFill],
-      reward:  [SVG.reward,  SVG.rewardFill],
       profile: [SVG.profile, SVG.profileFill]
     };
-    const mainPages = ['home','explore','live','reward','profile'];
+    const mainPages = ['home','explore','connect','live','profile'];
     const activePage = mainPages.includes(STATE.page) ? STATE.page : 'home';
     Object.entries(icons).forEach(([page, [off, on]]) => {
       const el = document.getElementById(`nav-icon-${page}`);
@@ -1543,6 +1948,23 @@ function boot() {
     refreshNavIcons();
   };
   refreshNavIcons();
+
+  // Visual viewport keyboard helper for mobile devices
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', () => {
+      const phoneDevice = document.getElementById('phone-device');
+      if (phoneDevice && window.innerWidth <= 430) {
+        phoneDevice.style.height = `${window.visualViewport.height}px`;
+      }
+    });
+  }
+
+  // Lock scroll on mobile when keyboard is open
+  window.addEventListener('scroll', () => {
+    if (window.innerWidth <= 430 && (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA')) {
+      window.scrollTo(0, 0);
+    }
+  });
 
   console.log('%c⚽ FanClub loaded', 'color:#22c55e;font-weight:bold;font-size:14px');
 }

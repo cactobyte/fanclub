@@ -6,80 +6,80 @@ const DATA = {
 
   homeMatches: {
     featured: {
-      homeTeam: 'INTER MILAN',  homeColor: '#003399', homeShort: 'INT',
-      awayTeam: 'REAL MADRID',  awayColor: '#FEBE10', awayShort: 'RMA',
-      competition: 'UCL',  competitionIcon: '🏆',
-      date: 'Wed, 15 SEP  –  22:00 PM',
-      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=700&h=320&fit=crop'
+      homeTeam: 'ENGLAND',    homeColor: '#ffffff', homeShort: 'ENG',
+      awayTeam: 'SPAIN',      awayColor: '#c60b1e', awayShort: 'ESP',
+      competition: 'World Cup 2026', competitionIcon: '🏆',
+      date: 'Sat, 21 JUN  –  20:00 PM',
+      image: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=700&h=320&fit=crop'
     },
     matchWeek: [
       {
-        home: 'Sampdoria', away: 'Inter Milan',
-        comp: 'Serie A', compColor: '#0066CC',
-        date: 'Tomorrow, 12 Sep', time: '08:00 PM',
-        image: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=320&h=200&fit=crop',
-        color: '#1E0080'
-      },
-      {
-        home: 'Real Madrid', away: 'Osasuna',
-        comp: 'La Liga', compColor: '#EE1C27',
-        date: 'Tomorrow, 12 Sep', time: '10:00 PM',
-        image: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=320&h=200&fit=crop',
-        color: '#0A1F44'
+        home: 'Brazil', away: 'Argentina',
+        comp: 'World Cup', compColor: '#22c55e',
+        date: 'Today, 17 Jun', time: '20:00 PM',
+        image: 'https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=320&h=200&fit=crop',
+        color: '#00379b'
       },
       {
         home: 'Arsenal', away: 'Liverpool',
-        comp: 'PL', compColor: '#3D195B',
-        date: 'Wed, 13 Sep', time: '07:30 PM',
+        comp: 'Premier League', compColor: '#3D195B',
+        date: 'Tomorrow, 18 Jun', time: '20:00 PM',
+        image: 'https://images.unsplash.com/photo-1529900748604-07564a03e7a6?w=320&h=200&fit=crop',
+        color: '#7B0000'
+      },
+      {
+        home: 'England', away: 'Portugal',
+        comp: 'World Cup', compColor: '#22c55e',
+        date: 'Wed, 19 Jun', time: '20:00 PM',
         image: 'https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=320&h=200&fit=crop',
         color: '#7B0000'
       },
       {
         home: 'PSG', away: 'Bayern',
-        comp: 'UCL', compColor: '#1B318E',
-        date: 'Thu, 14 Sep', time: '21:00 PM',
-        image: 'https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=320&h=200&fit=crop',
+        comp: 'UCL', compColor: '#0047AB',
+        date: 'Thu, 20 Jun', time: '21:00 PM',
+        image: 'https://images.unsplash.com/photo-1529900748604-07564a03e7a6?w=320&h=200&fit=crop',
         color: '#003A6B'
       }
     ],
     liveScores: [
-      { home: 'Leeds United', homeId: null,      away: 'Liverpool',  awayId: 'liverpool', homeScore: 0, awayScore: 2, minute: 85, comp: 'PL' },
-      { home: 'Espanyol',     homeId: null,      away: 'Atl. Madrid',awayId: null,        homeScore: 1, awayScore: 0, minute: 72, comp: 'LL' },
-      { home: 'PSG',          homeId: 'psg',     away: 'Bayern',     awayId: 'bayern',    homeScore: 0, awayScore: 2, minute: 78, comp: 'UCL' },
-      { home: 'Arsenal',      homeId: 'arsenal', away: 'Chelsea',    awayId: 'chelsea',   homeScore: 2, awayScore: 1, minute: 67, comp: 'PL' }
+      { home: 'Brazil',   homeId: 'brazil-nt',  away: 'Argentina', awayId: null,      homeScore: 1, awayScore: 0, minute: 67, comp: 'WC QF' },
+      { home: 'Morocco',  homeId: null,         away: 'Croatia',   awayId: null,      homeScore: 1, awayScore: 0, minute: 58, comp: 'WC' },
+      { home: 'Arsenal',  homeId: 'arsenal',    away: 'Chelsea',   awayId: 'chelsea', homeScore: 2, awayScore: 1, minute: 67, comp: 'PL' },
+      { home: 'PSG',      homeId: 'psg',        away: 'Bayern',    awayId: 'bayern',  homeScore: 0, awayScore: 2, minute: 78, comp: 'UCL' }
     ],
     highlights: [
       {
-        home: 'MAN. UNITED', away: 'NEWCASTLE',
-        comp: 'PL', duration: '02:31', color: '#9B1FBA',
-        image: 'https://images.unsplash.com/photo-1540747913346-19212a729eed?w=320&h=220&fit=crop'
+        home: 'BRAZIL', away: 'ECUADOR',
+        comp: 'World Cup', duration: '02:47', color: '#009c3b',
+        image: 'https://images.unsplash.com/photo-1529900748604-07564a03e7a6?w=320&h=220&fit=crop'
       },
       {
-        home: 'ATL. MADRID', away: 'VILLARREAL',
-        comp: 'La Liga', duration: '01:45', color: '#C8102E',
-        image: 'https://images.unsplash.com/photo-1565974498891-5d5e7a1bfe25?w=320&h=220&fit=crop'
+        home: 'FRANCE', away: 'POLAND',
+        comp: 'World Cup', duration: '01:53', color: '#002395',
+        image: 'https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=320&h=220&fit=crop'
       },
       {
-        home: 'DORTMUND', away: 'LEIPZIG',
-        comp: 'BL', duration: '03:10', color: '#FDE113',
-        image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=320&h=220&fit=crop'
+        home: 'ENGLAND', away: 'IRAN',
+        comp: 'World Cup', duration: '03:12', color: '#012169',
+        image: 'https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=320&h=220&fit=crop'
       }
     ],
     previews: [
       {
-        home: 'BARCELONA', away: 'BAYERN MÜNCHEN',
-        comp: 'UCL', duration: '02:20', color: '#004D98',
-        image: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=320&h=220&fit=crop'
+        home: 'SPAIN', away: 'ITALY',
+        comp: 'World Cup', duration: '02:15', color: '#c60b1e',
+        image: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=320&h=220&fit=crop'
       },
       {
-        home: 'AC MILAN', away: 'FIORENTINA',
-        comp: 'Serie A', duration: '01:58', color: '#AD2026',
-        image: 'https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=320&h=220&fit=crop'
-      },
-      {
-        home: 'MAN CITY', away: 'CHELSEA',
-        comp: 'PL', duration: '02:05', color: '#6CAADE',
+        home: 'ARGENTINA', away: 'CHILE',
+        comp: 'World Cup', duration: '02:00', color: '#74acdf',
         image: 'https://images.unsplash.com/photo-1521537634581-0dced2fee2ef?w=320&h=220&fit=crop'
+      },
+      {
+        home: 'GERMANY', away: 'SWITZERLAND',
+        comp: 'World Cup', duration: '01:45', color: '#000000',
+        image: 'https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=320&h=220&fit=crop'
       }
     ]
   },
@@ -117,7 +117,7 @@ const DATA = {
       fanScore: 9.2,
       ranking: 3,
       description: 'Arsenal Football Club is a professional football club based in Islington, North London. Known as The Gunners, they are one of England\'s most successful clubs.',
-      topCommunityIds: ['arsenal-fc-official', 'north-london-forever', 'invincibles-tribute'],
+      topCommunityIds: ['arsenal-fc-official', 'north-london-forever', 'arsenal-lagos-chapter', 'arsenal-mumbai-reds'],
       activeCountries: [
         { country: 'England', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', pct: 35 },
         { country: 'Nigeria', flag: '🇳🇬', pct: 18 },
@@ -148,7 +148,7 @@ const DATA = {
       fanScore: 9.7,
       ranking: 1,
       description: 'Liverpool FC is one of England\'s most successful football clubs. Nicknamed The Reds, they are renowned for their passionate supporters and iconic Anfield atmosphere.',
-      topCommunityIds: ['the-kop', 'kopites-worldwide'],
+      topCommunityIds: ['the-kop', 'kopites-worldwide', 'kopites-kuala-lumpur'],
       activeCountries: [
         { country: 'England', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', pct: 28 },
         { country: 'Ireland', flag: '🇮🇪', pct: 14 },
@@ -179,7 +179,7 @@ const DATA = {
       fanScore: 8.9,
       ranking: 2,
       description: 'Manchester United is one of the most widely supported football clubs in the world. Based at Old Trafford — The Theatre of Dreams.',
-      topCommunityIds: ['red-devils-united', 'stretford-end'],
+      topCommunityIds: ['red-devils-united', 'stretford-end', 'united-bangkok-army', 'red-devils-jakarta'],
       activeCountries: [
         { country: 'England', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', pct: 22 },
         { country: 'China', flag: '🇨🇳', pct: 19 },
@@ -210,7 +210,7 @@ const DATA = {
       fanScore: 8.4,
       ranking: 5,
       description: 'Chelsea FC is an English professional football club based in Fulham, West London. Nicknamed The Blues, they play at Stamford Bridge.',
-      topCommunityIds: ['chelsea-blues', 'stamford-bridge-faithful'],
+      topCommunityIds: ['chelsea-blues', 'stamford-bridge-faithful', 'chelsea-fans-mumbai', 'blues-tokyo'],
       activeCountries: [
         { country: 'England', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', pct: 31 },
         { country: 'USA', flag: '🇺🇸', pct: 12 },
@@ -346,7 +346,252 @@ const DATA = {
       upcomingMatches: [
         { opponent: 'PSG', opponentId: 'psg', home: false, date: 'Today', comp: 'UCL QF' },
         { opponent: 'Man United', opponentId: 'man-utd', home: true, date: 'Tue, Jun 17', comp: 'Friendly' },
-        { opponent: 'Dortmund', opponentId: null, home: false, date: 'Sat, Jun 21', comp: 'Bundesliga' }
+        { opponent: 'Dortmund', opponentId: 'dortmund', home: false, date: 'Sat, Jun 21', comp: 'Bundesliga' }
+      ]
+    },
+    {
+      id: 'stuttgart',
+      name: 'Stuttgart',
+      fullName: 'VfB Stuttgart',
+      shortName: 'VFB',
+      league: 'Bundesliga',
+      country: 'Germany',
+      founded: 1893,
+      stadium: 'MHPArena',
+      city: 'Stuttgart',
+      color: '#E31E2D',
+      bgGradient: 'linear-gradient(135deg,#E31E2D,#8B0000)',
+      followers: '420K',
+      fanScore: 8.1,
+      ranking: 12,
+      description: 'VfB Stuttgart is a German professional football club. Winners of 5 Bundesliga titles, they are one of Germany\'s most historic clubs.',
+      topCommunityIds: ['vfb-ultras', 'stuttgart-fans-asia'],
+      activeCountries: [
+        { country: 'Germany', flag: '🇩🇪', pct: 52 },
+        { country: 'Turkey', flag: '🇹🇷', pct: 14 },
+        { country: 'Japan', flag: '🇯🇵', pct: 8 },
+        { country: 'Austria', flag: '🇦🇹', pct: 7 },
+        { country: 'USA', flag: '🇺🇸', pct: 5 }
+      ],
+      recentForm: ['W','W','W','L','W'],
+      upcomingMatches: [
+        { opponent: 'Bayern Munich', opponentId: 'bayern', home: false, date: 'Sat, Jun 21', comp: 'Bundesliga' },
+        { opponent: 'Dortmund', opponentId: 'dortmund', home: true, date: 'Fri, Jun 27', comp: 'Bundesliga' },
+        { opponent: 'Leverkusen', opponentId: null, home: false, date: 'Sat, Jul 5', comp: 'Bundesliga' }
+      ]
+    },
+    {
+      id: 'atletico',
+      name: 'Atletico Madrid',
+      fullName: 'Club Atlético de Madrid',
+      shortName: 'ATM',
+      league: 'La Liga',
+      country: 'Spain',
+      founded: 1903,
+      stadium: 'Metropolitano',
+      city: 'Madrid',
+      color: '#CE3524',
+      bgGradient: 'linear-gradient(135deg,#CE3524,#1B2B6B)',
+      followers: '1.9M',
+      fanScore: 8.8,
+      ranking: 8,
+      description: 'Atlético de Madrid are the underdogs of Madrid who punch above their weight. Known for their intense defending and passionate Colchoneros fan base.',
+      topCommunityIds: ['colchoneros-union', 'atletico-latam'],
+      activeCountries: [
+        { country: 'Spain', flag: '🇪🇸', pct: 38 },
+        { country: 'Argentina', flag: '🇦🇷', pct: 16 },
+        { country: 'Mexico', flag: '🇲🇽', pct: 12 },
+        { country: 'Colombia', flag: '🇨🇴', pct: 9 },
+        { country: 'Brazil', flag: '🇧🇷', pct: 7 }
+      ],
+      recentForm: ['W','D','W','W','D'],
+      upcomingMatches: [
+        { opponent: 'Real Madrid', opponentId: 'real-madrid', home: false, date: 'Sun, Jun 22', comp: 'La Liga' },
+        { opponent: 'Barcelona', opponentId: 'barcelona', home: true, date: 'Sat, Jun 28', comp: 'La Liga' },
+        { opponent: 'Sevilla', opponentId: null, home: false, date: 'Sun, Jul 6', comp: 'La Liga' }
+      ]
+    },
+    {
+      id: 'ac-milan',
+      name: 'AC Milan',
+      fullName: 'AC Milan',
+      shortName: 'MIL',
+      league: 'Serie A',
+      country: 'Italy',
+      founded: 1899,
+      stadium: 'San Siro',
+      city: 'Milan',
+      color: '#FB090B',
+      bgGradient: 'linear-gradient(135deg,#FB090B,#1A1A1A)',
+      followers: '2.4M',
+      fanScore: 8.7,
+      ranking: 9,
+      description: 'AC Milan are one of the world\'s most iconic football clubs. 7x European Cup winners, the Rossoneri are synonymous with style, prestige, and football greatness.',
+      topCommunityIds: ['rossoneri-milan', 'milan-fans-singapore'],
+      activeCountries: [
+        { country: 'Italy', flag: '🇮🇹', pct: 33 },
+        { country: 'Brazil', flag: '🇧🇷', pct: 12 },
+        { country: 'Japan', flag: '🇯🇵', pct: 10 },
+        { country: 'Indonesia', flag: '🇮🇩', pct: 9 },
+        { country: 'USA', flag: '🇺🇸', pct: 8 }
+      ],
+      recentForm: ['W','W','D','W','L'],
+      upcomingMatches: [
+        { opponent: 'Juventus', opponentId: 'juventus', home: true, date: 'Sun, Jun 22', comp: 'Serie A' },
+        { opponent: 'Inter Milan', opponentId: null, home: false, date: 'Sat, Jun 28', comp: 'Serie A Derby' },
+        { opponent: 'Napoli', opponentId: null, home: true, date: 'Sun, Jul 6', comp: 'Serie A' }
+      ]
+    },
+    {
+      id: 'juventus',
+      name: 'Juventus',
+      fullName: 'Juventus FC',
+      shortName: 'JUV',
+      league: 'Serie A',
+      country: 'Italy',
+      founded: 1897,
+      stadium: 'Allianz Stadium',
+      city: 'Turin',
+      color: '#000000',
+      bgGradient: 'linear-gradient(135deg,#2a2a2a,#4a4a4a)',
+      followers: '3.2M',
+      fanScore: 8.5,
+      ranking: 10,
+      description: 'Juventus FC — La Vecchia Signora. Italy\'s most successful club with 36 Serie A titles. The Old Lady of Italian football commands a global following.',
+      topCommunityIds: ['bianconeri-official', 'juve-fans-dubai'],
+      activeCountries: [
+        { country: 'Italy', flag: '🇮🇹', pct: 29 },
+        { country: 'UAE', flag: '🇦🇪', pct: 13 },
+        { country: 'Brazil', flag: '🇧🇷', pct: 11 },
+        { country: 'Argentina', flag: '🇦🇷', pct: 9 },
+        { country: 'France', flag: '🇫🇷', pct: 7 }
+      ],
+      recentForm: ['D','W','W','D','W'],
+      upcomingMatches: [
+        { opponent: 'AC Milan', opponentId: 'ac-milan', home: false, date: 'Sun, Jun 22', comp: 'Serie A' },
+        { opponent: 'Napoli', opponentId: null, home: true, date: 'Sat, Jun 28', comp: 'Serie A' },
+        { opponent: 'Inter Milan', opponentId: null, home: false, date: 'Sun, Jul 6', comp: 'Serie A' }
+      ]
+    },
+    {
+      id: 'dortmund',
+      name: 'Dortmund',
+      fullName: 'Borussia Dortmund',
+      shortName: 'BVB',
+      league: 'Bundesliga',
+      country: 'Germany',
+      founded: 1909,
+      stadium: 'Signal Iduna Park',
+      city: 'Dortmund',
+      color: '#FDE122',
+      bgGradient: 'linear-gradient(135deg,#FDE122,#c8a800)',
+      followers: '1.7M',
+      fanScore: 8.6,
+      ranking: 11,
+      description: 'Borussia Dortmund — BVB. Home of the famous Yellow Wall, the largest standing terrace in European football. Die Schwarzgelben are a European giant with the most passionate support.',
+      topCommunityIds: ['yellow-wall-bvb', 'bvb-fans-worldwide'],
+      activeCountries: [
+        { country: 'Germany', flag: '🇩🇪', pct: 44 },
+        { country: 'Poland', flag: '🇵🇱', pct: 12 },
+        { country: 'Japan', flag: '🇯🇵', pct: 9 },
+        { country: 'UK', flag: '🇬🇧', pct: 7 },
+        { country: 'USA', flag: '🇺🇸', pct: 6 }
+      ],
+      recentForm: ['W','L','W','W','D'],
+      upcomingMatches: [
+        { opponent: 'Bayern Munich', opponentId: 'bayern', home: true, date: 'Sat, Jun 21', comp: 'Bundesliga' },
+        { opponent: 'Stuttgart', opponentId: 'stuttgart', home: false, date: 'Fri, Jun 27', comp: 'Bundesliga' },
+        { opponent: 'Leipzig', opponentId: null, home: true, date: 'Sat, Jul 5', comp: 'Bundesliga' }
+      ]
+    },
+
+    // ── National Teams — World Cup 2026 ──
+    {
+      id: 'england-nt', name: 'England', fullName: 'England National Team',
+      shortName: 'ENG', league: 'International', country: 'England',
+      founded: 1863, stadium: 'Wembley Stadium', city: 'London',
+      color: '#ffffff', bgGradient: 'linear-gradient(135deg,#012169,#C8102E)',
+      followers: '8.2M', fanScore: 9.1, ranking: 4,
+      description: 'The Three Lions. England\'s national football team and one of the most followed sides at the 2026 World Cup. It\'s coming home.',
+      topCommunityIds: ['three-lions-2026', 'arsenal-lagos-chapter', 'kopites-kuala-lumpur'],
+      activeCountries: [
+        { country: 'England', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', pct: 48 },
+        { country: 'Nigeria', flag: '🇳🇬', pct: 14 },
+        { country: 'India', flag: '🇮🇳', pct: 9 },
+        { country: 'USA', flag: '🇺🇸', pct: 8 },
+        { country: 'Australia', flag: '🇦🇺', pct: 5 }
+      ],
+      recentForm: ['W','W','D','W','W'],
+      upcomingMatches: [
+        { opponent: 'Portugal', opponentId: null, home: false, date: 'Wed, Jun 19', comp: 'World Cup' },
+        { opponent: 'Spain', opponentId: 'spain-nt', home: false, date: 'Sat, Jun 21', comp: 'World Cup SF' },
+        { opponent: 'TBD', opponentId: null, home: false, date: 'Sat, Jun 28', comp: 'World Cup Final' }
+      ]
+    },
+    {
+      id: 'spain-nt', name: 'Spain', fullName: 'Spain National Team',
+      shortName: 'ESP', league: 'International', country: 'Spain',
+      founded: 1913, stadium: 'Santiago Bernabéu', city: 'Madrid',
+      color: '#c60b1e', bgGradient: 'linear-gradient(135deg,#c60b1e,#f1bf00)',
+      followers: '6.7M', fanScore: 8.9, ranking: 2,
+      description: 'La Roja. European Champions and World Cup 2026 favourites. Spain\'s tiki-taka evolution under the new generation.',
+      topCommunityIds: ['spain-roja-fans', 'colchoneros-union', 'cules-worldwide'],
+      activeCountries: [
+        { country: 'Spain', flag: '🇪🇸', pct: 44 },
+        { country: 'Mexico', flag: '🇲🇽', pct: 16 },
+        { country: 'Argentina', flag: '🇦🇷', pct: 10 },
+        { country: 'USA', flag: '🇺🇸', pct: 8 },
+        { country: 'Colombia', flag: '🇨🇴', pct: 6 }
+      ],
+      recentForm: ['W','W','W','D','W'],
+      upcomingMatches: [
+        { opponent: 'Italy', opponentId: null, home: false, date: 'Mon, Jun 18', comp: 'World Cup' },
+        { opponent: 'England', opponentId: 'england-nt', home: false, date: 'Sat, Jun 21', comp: 'World Cup SF' },
+        { opponent: 'TBD', opponentId: null, home: false, date: 'Sat, Jun 28', comp: 'World Cup Final' }
+      ]
+    },
+    {
+      id: 'germany-nt', name: 'Germany', fullName: 'Germany National Team',
+      shortName: 'GER', league: 'International', country: 'Germany',
+      founded: 1900, stadium: 'Allianz Arena', city: 'Munich',
+      color: '#000000', bgGradient: 'linear-gradient(135deg,#1a1a1a,#3a3a3a)',
+      followers: '5.9M', fanScore: 8.7, ranking: 5,
+      description: 'Die Mannschaft. Four-time World Champions and perpetual contenders. Germany\'s golden generation returns to the world stage.',
+      topCommunityIds: ['die-mannschaft-fans', 'yellow-wall-bvb', 'mia-san-mia'],
+      activeCountries: [
+        { country: 'Germany', flag: '🇩🇪', pct: 51 },
+        { country: 'Turkey', flag: '🇹🇷', pct: 13 },
+        { country: 'Poland', flag: '🇵🇱', pct: 8 },
+        { country: 'Austria', flag: '🇦🇹', pct: 7 },
+        { country: 'USA', flag: '🇺🇸', pct: 5 }
+      ],
+      recentForm: ['W','D','W','W','L'],
+      upcomingMatches: [
+        { opponent: 'France', opponentId: 'france-nt', home: false, date: 'Tomorrow, Jun 18', comp: 'World Cup QF' },
+        { opponent: 'TBD', opponentId: null, home: false, date: 'Wed, Jun 25', comp: 'World Cup SF' },
+        { opponent: 'TBD', opponentId: null, home: false, date: 'Sat, Jun 28', comp: 'World Cup Final' }
+      ]
+    },
+    {
+      id: 'brazil-nt', name: 'Brazil', fullName: 'Brazil National Team',
+      shortName: 'BRA', league: 'International', country: 'Brazil',
+      founded: 1914, stadium: 'Maracanã', city: 'Rio de Janeiro',
+      color: '#009c3b', bgGradient: 'linear-gradient(135deg,#009c3b,#FEDD00)',
+      followers: '12.4M', fanScore: 9.4, ranking: 1,
+      description: 'A Seleção. Five-time World Champions and the most loved football nation on earth. Brazil 2026 — the Samba is back.',
+      topCommunityIds: ['selecao-brasil-2026', 'bvb-sao-paulo', 'rossoneri-milan'],
+      activeCountries: [
+        { country: 'Brazil', flag: '🇧🇷', pct: 39 },
+        { country: 'USA', flag: '🇺🇸', pct: 12 },
+        { country: 'Japan', flag: '🇯🇵', pct: 9 },
+        { country: 'Portugal', flag: '🇵🇹', pct: 7 },
+        { country: 'Argentina', flag: '🇦🇷', pct: 6 }
+      ],
+      recentForm: ['W','W','W','W','D'],
+      upcomingMatches: [
+        { opponent: 'Argentina', opponentId: null, home: false, date: 'Today, Jun 17', comp: 'World Cup QF' },
+        { opponent: 'TBD', opponentId: null, home: false, date: 'Fri, Jun 21', comp: 'World Cup SF' },
+        { opponent: 'TBD', opponentId: null, home: false, date: 'Sat, Jun 28', comp: 'World Cup Final' }
       ]
     }
   ],
@@ -361,17 +606,51 @@ const DATA = {
     { id: 'stretford-end', name: 'Stretford End', teamId: 'man-utd', members: 234567, activity: 'High', category: 'Unofficial', color: '#DA291C', lastActivity: '15m ago', description: 'Old Trafford faithful. Glory glory Man United!', posts: 1567 },
     { id: 'chelsea-blues', name: 'Chelsea Blues', teamId: 'chelsea', members: 189234, activity: 'High', category: 'Official', color: '#034694', lastActivity: '10m ago', description: 'Official Chelsea FC supporter community. Come On You Blues!', posts: 1023 },
     { id: 'stamford-bridge-faithful', name: 'Stamford Bridge Faithful', teamId: 'chelsea', members: 78234, activity: 'Medium', category: 'Unofficial', color: '#034694', lastActivity: '45m ago', description: 'True blue Chelsea supporters from day one.', posts: 567 },
-    { id: 'cules-worldwide', name: 'Cules Worldwide', teamId: 'barcelona', members: 892345, activity: 'Very High', category: 'Global', color: '#004D98', lastActivity: '1m ago', description: 'FC Barcelona supporters from around the world. Més que un club!', posts: 4567 },
-    { id: 'mes-que-un-club', name: 'Més que un club', teamId: 'barcelona', members: 345678, activity: 'High', category: 'Official', color: '#004D98', lastActivity: '7m ago', description: 'More than a club. The official Barcelona supporter community.', posts: 2345 },
-    { id: 'los-blancos', name: 'Los Blancos', teamId: 'real-madrid', members: 1234567, activity: 'Very High', category: 'Global', color: '#7B68EE', lastActivity: '30s ago', description: 'Real Madrid supporters worldwide. Hala Madrid!', posts: 6789 },
-    { id: 'hala-madrid', name: 'Hala Madrid!', teamId: 'real-madrid', members: 567890, activity: 'Very High', category: 'Official', color: '#7B68EE', lastActivity: '2m ago', description: 'The official Real Madrid global fan community.', posts: 3456 },
+    { id: 'mes-que-un-club', name: 'Més que un club', teamId: 'barcelona', members: 89234, activity: 'High', category: 'Official', color: '#004D98', lastActivity: '7m ago', description: 'More than a club. The official Barcelona supporter community.', posts: 2345 },
+    { id: 'hala-madrid', name: 'Hala Madrid!', teamId: 'real-madrid', members: 78234, activity: 'High', category: 'Official', color: '#7B68EE', lastActivity: '2m ago', description: 'The official Real Madrid global fan community.', posts: 3456 },
     { id: 'parisians-psg', name: 'Parisians PSG', teamId: 'psg', members: 456789, activity: 'High', category: 'Official', color: '#004170', lastActivity: '12m ago', description: 'Paris Saint-Germain supporters. Paris est magique!', posts: 2123 },
     { id: 'paris-est-magique', name: 'Paris est Magique', teamId: 'psg', members: 123456, activity: 'High', category: 'Unofficial', color: '#004170', lastActivity: '20m ago', description: 'The magic of Paris, on and off the pitch.', posts: 934 },
     { id: 'fc-bayern-fans', name: 'FC Bayern Fan Club', teamId: 'bayern', members: 345678, activity: 'High', category: 'Official', color: '#DC052D', lastActivity: '20m ago', description: 'FC Bayern München supporter community. Mia san Mia!', posts: 1789 },
     { id: 'mia-san-mia', name: 'Mia San Mia', teamId: 'bayern', members: 98765, activity: 'Medium', category: 'Unofficial', color: '#DC052D', lastActivity: '35m ago', description: 'We are who we are. True Bayern fans.', posts: 623 },
-    { id: 'ucl-weekly', name: 'UCL Weekly', teamId: null, members: 789234, activity: 'Very High', category: 'Competition', color: '#1E3A8A', lastActivity: '5m ago', description: 'Champions League news, predictions, and match reactions.', posts: 4321 },
-    { id: 'transfer-rumours', name: 'Transfer Rumours HQ', teamId: null, members: 1123456, activity: 'Very High', category: 'News', color: '#7C3AED', lastActivity: '1m ago', description: 'The latest transfer news, rumours, and gossip from around Europe.', posts: 8234 },
-    { id: 'tactical-analysis', name: 'Tactical Analysis', teamId: null, members: 234567, activity: 'Medium', category: 'Analysis', color: '#0F766E', lastActivity: '1h ago', description: 'Deep dive tactics, formations, and football intelligence.', posts: 1234 }
+    { id: 'tactical-analysis', name: 'Tactical Analysis', teamId: null, members: 234567, activity: 'Medium', category: 'Analysis', color: '#0F766E', lastActivity: '1h ago', description: 'Deep dive tactics, formations, and football intelligence.', posts: 1234 },
+
+    // ── Local / Regional Chapters — FanClub USP ──
+    { id: 'chelsea-fans-mumbai', name: 'Chelsea Fans Mumbai 🇮🇳', teamId: 'chelsea', members: 4821, activity: 'High', category: 'Local Chapter', color: '#034694', lastActivity: '18m ago', description: 'Mumbai\'s biggest Chelsea supporter group. We watch every game together at our local pub in Bandra. Join us for matchday meetups!', posts: 312 },
+    { id: 'united-bangkok-army', name: 'United Bangkok\'s Army 🇹🇭', teamId: 'man-utd', members: 8934, activity: 'Very High', category: 'Local Chapter', color: '#DA291C', lastActivity: '4m ago', description: 'Manchester United\'s most passionate supporter group in Southeast Asia. Based in Bangkok with 20+ meetup spots across the city.', posts: 891 },
+    { id: 'arsenal-lagos-chapter', name: 'Arsenal Lagos Chapter 🇳🇬', teamId: 'arsenal', members: 11203, activity: 'Very High', category: 'Local Chapter', color: '#EF0107', lastActivity: '2m ago', description: 'The Gunners\' largest African chapter. Lagos loves Arsenal. Sunday matches bring 300+ fans to our viewing parties in Victoria Island.', posts: 1203 },
+    { id: 'arsenal-mumbai-reds', name: 'Arsenal Mumbai Reds 🇮🇳', teamId: 'arsenal', members: 3456, activity: 'High', category: 'Local Chapter', color: '#EF0107', lastActivity: '25m ago', description: 'Arsenal fans across Mumbai and Pune. Early morning kick-offs, late night celebrations — we\'re always there for The Gunners.', posts: 234 },
+    { id: 'kopites-kuala-lumpur', name: 'Kopites Kuala Lumpur 🇲🇾', teamId: 'liverpool', members: 6712, activity: 'High', category: 'Local Chapter', color: '#C8102E', lastActivity: '11m ago', description: 'YNWA from Malaysia! KL\'s premier Liverpool supporter club with weekly watch parties across Bangsar and KLCC.', posts: 567 },
+    { id: 'red-devils-jakarta', name: 'Red Devils Jakarta 🇮🇩', teamId: 'man-utd', members: 15234, activity: 'Very High', category: 'Local Chapter', color: '#DA291C', lastActivity: '1m ago', description: 'Indonesia\'s biggest Man United chapter. 15,000+ members across Jakarta, Surabaya, and Bandung. Largest Man United group in Southeast Asia.', posts: 2341 },
+    { id: 'blues-tokyo', name: 'Blues Tokyo 🇯🇵', teamId: 'chelsea', members: 3201, activity: 'High', category: 'Local Chapter', color: '#034694', lastActivity: '30m ago', description: 'Chelsea FC Japan supporters based in Tokyo. Monthly meetups in Shibuya. English & Japanese welcome. Come On You Blues!', posts: 189 },
+    { id: 'real-madrid-jakarta', name: 'Hala Madrid Jakarta 🇮🇩', teamId: 'real-madrid', members: 22450, activity: 'Very High', category: 'Local Chapter', color: '#7B68EE', lastActivity: '5m ago', description: 'Jakarta\'s Real Madrid family. The biggest Madridista community in Southeast Asia with over 22,000 members city-wide.', posts: 3102 },
+    { id: 'barca-nairobi', name: 'Barça Fans Nairobi 🇰🇪', teamId: 'barcelona', members: 7823, activity: 'High', category: 'Local Chapter', color: '#004D98', lastActivity: '22m ago', description: 'Més que un club — in Kenya! Nairobi\'s passionate Barça community. UCL nights are legendary at our Westlands venue.', posts: 623 },
+    { id: 'psg-fans-seoul', name: 'PSG Supporters Seoul 🇰🇷', teamId: 'psg', members: 5102, activity: 'High', category: 'Local Chapter', color: '#004170', lastActivity: '40m ago', description: 'Korean PSG fans united. Based in Seoul with monthly events and a growing community of 5,000+ passionate supporters.', posts: 401 },
+    { id: 'bavarian-expats-dubai', name: 'Bayern Dubai Stammtisch 🇦🇪', teamId: 'bayern', members: 2890, activity: 'Medium', category: 'Local Chapter', color: '#DC052D', lastActivity: '2h ago', description: 'German expats and Bayern fans in Dubai. Stammtisch every matchday — Prost and Mia San Mia from the Gulf!', posts: 156 },
+
+    // ── New team communities ──
+    { id: 'vfb-ultras', name: 'VfB Stuttgart Ultras 🔴', teamId: 'stuttgart', members: 18923, activity: 'Very High', category: 'Ultras', color: '#E31E2D', lastActivity: '8m ago', description: 'The Stuttgart faithful. Die Roten through and through. Cannstatter Kurve is our home, MHPArena our fortress.', posts: 1823 },
+    { id: 'stuttgart-fans-asia', name: 'Stuttgart Fans Asia 🌏', teamId: 'stuttgart', members: 1203, activity: 'Medium', category: 'Local Chapter', color: '#E31E2D', lastActivity: '3h ago', description: 'Supporting VfB Stuttgart from across Asia — Japan, South Korea, and beyond. Watanabe and Endo made us famous here!', posts: 89 },
+    { id: 'colchoneros-union', name: 'Colchoneros Unión 🔴🔵', teamId: 'atletico', members: 89432, activity: 'Very High', category: 'Official', color: '#CE3524', lastActivity: '6m ago', description: 'Atlético de Madrid\'s main supporter union. Passion, grit, and never giving up. Cholismo lives here.', posts: 4231 },
+    { id: 'atletico-latam', name: 'Atlético LATAM 🌎', teamId: 'atletico', members: 34567, activity: 'High', category: 'Regional', color: '#CE3524', lastActivity: '45m ago', description: 'Latin American Atlético fans from Mexico City to Buenos Aires. The Colchoneros spirit burns across the Americas.', posts: 1567 },
+    { id: 'rossoneri-milan', name: 'Rossoneri Milan Fans ⚫🔴', teamId: 'ac-milan', members: 234890, activity: 'Very High', category: 'Official', color: '#FB090B', lastActivity: '3m ago', description: 'AC Milan\'s global supporter community. Forever Rossoneri. San Siro is the cathedral of football.', posts: 5432 },
+    { id: 'milan-fans-singapore', name: 'Milan Fans Singapore 🇸🇬', teamId: 'ac-milan', members: 2341, activity: 'Medium', category: 'Local Chapter', color: '#FB090B', lastActivity: '1h ago', description: 'AC Milan supporters in the Lion City. Monthly meetups in Clarke Quay. All Singapore-based Rossoneri welcome!', posts: 145 },
+    { id: 'bianconeri-official', name: 'Bianconeri Official ⚪⚫', teamId: 'juventus', members: 456789, activity: 'Very High', category: 'Official', color: '#454545', lastActivity: '2m ago', description: 'The official Juventus FC fan community. La Vecchia Signora supporters worldwide. Fino alla fine.', posts: 8901 },
+    { id: 'juve-fans-dubai', name: 'Juve Fans Dubai 🇦🇪', teamId: 'juventus', members: 4102, activity: 'High', category: 'Local Chapter', color: '#454545', lastActivity: '55m ago', description: 'Juventus supporters in Dubai and the UAE. Italian expats and Juve lovers welcome. Forza Juve from the Middle East!', posts: 312 },
+    { id: 'yellow-wall-bvb', name: 'The Yellow Wall 🟡⚫', teamId: 'dortmund', members: 187234, activity: 'Very High', category: 'Official', color: '#FDE122', lastActivity: '7m ago', description: 'Borussia Dortmund\'s main fan community. 81,365 capacity, the largest standing terrace in Europe. Echte Liebe.', posts: 6234 },
+    { id: 'bvb-fans-worldwide', name: 'BVB Fans Worldwide 🌍', teamId: 'dortmund', members: 67891, activity: 'High', category: 'Global', color: '#FDE122', lastActivity: '19m ago', description: 'Supporting BVB from every corner of the world. Yellow and Black runs in our veins no matter where we are.', posts: 2341 },
+    { id: 'bvb-sao-paulo', name: 'BVB São Paulo 🇧🇷', teamId: 'dortmund', members: 3892, activity: 'Medium', category: 'Local Chapter', color: '#FDE122', lastActivity: '2h ago', description: 'Brazilian Borussia fans in São Paulo. German football meets Brazilian passion. Echte Liebe from Brazil!', posts: 198 },
+
+    // ── World Cup 2026 Communities ──
+    { id: 'three-lions-2026', name: 'Three Lions 2026 🏴󠁧󠁢󠁥󠁮󠁧󠁿', teamId: null, members: 892341, activity: 'Very High', category: 'World Cup', color: '#012169', lastActivity: '1m ago', description: 'England\'s World Cup 2026 official fan community. It\'s coming home! Live match threads, fan meetups across USA & Mexico, and post-match reactions.', posts: 12834 },
+    { id: 'selecao-brasil-2026', name: 'Seleção 2026 🇧🇷', teamId: null, members: 2341892, activity: 'Very High', category: 'World Cup', color: '#009c3b', lastActivity: '30s ago', description: 'A maior torcida do mundo. Brazil\'s WC 2026 fan community — the largest national supporter group on FanClub. Vai Brasil!', posts: 45231 },
+    { id: 'albiceleste-fans', name: 'Albiceleste 🇦🇷', teamId: null, members: 1789234, activity: 'Very High', category: 'World Cup', color: '#74acdf', lastActivity: '2m ago', description: 'Argentina 2026 — defending champions! Messi\'s legacy continues. The largest Albiceleste community on FanClub.', posts: 38921 },
+    { id: 'les-bleus-2026', name: 'Les Bleus 🇫🇷', teamId: null, members: 934521, activity: 'Very High', category: 'World Cup', color: '#002395', lastActivity: '5m ago', description: 'France 2026 fan community. Allez les Bleus! Live match threads, squad analysis, and the biggest French football discussions.', posts: 18923 },
+    { id: 'die-mannschaft-fans', name: 'Die Mannschaft 🇩🇪', teamId: null, members: 678234, activity: 'High', category: 'World Cup', color: '#000000', lastActivity: '12m ago', description: 'German national team supporters for World Cup 2026. Auf geht\'s Deutschland! Match threads, lineup debates, and fan meetups.', posts: 9821 },
+    { id: 'tri-fans-2026', name: 'Tri Fans Mexico 🇲🇽', teamId: null, members: 1234567, activity: 'Very High', category: 'World Cup', color: '#006847', lastActivity: '3m ago', description: 'El Tri en casa! Mexico 2026 — home World Cup edition. The biggest Mexican football community on FanClub, with local meetups across CDMX and beyond.', posts: 28341 },
+    { id: 'spain-roja-fans', name: 'La Roja 🇪🇸', teamId: null, members: 823451, activity: 'Very High', category: 'World Cup', color: '#c60b1e', lastActivity: '7m ago', description: 'Spain\'s WC 2026 fan community. Defending European Champions taking on the world. Vamos España!', posts: 15234 },
+    { id: 'usa-soccer-nation', name: 'USA Soccer Nation 🇺🇸', teamId: null, members: 567892, activity: 'High', category: 'World Cup', color: '#002868', lastActivity: '20m ago', description: 'US Men\'s National Team fan hub for World Cup 2026. Home tournament, huge stakes. The soccer revolution is here — Let\'s go USA!', posts: 8921 },
+    { id: 'atlas-lions', name: 'Atlas Lions 🇲🇦', teamId: null, members: 423891, activity: 'Very High', category: 'World Cup', color: '#c1121f', lastActivity: '9m ago', description: 'Morocco 2026 fan community. The African dream continues! Atlas Lions are back and ready to shock the world again.', posts: 11234 },
+    { id: 'wc-2026-general', name: 'World Cup 2026 Central 🌍', teamId: null, members: 4231567, activity: 'Very High', category: 'World Cup', color: '#1a1a2e', lastActivity: '10s ago', description: 'The main World Cup 2026 community. All matches, all teams, all fans. The biggest football event in history — USA, Canada & Mexico hosting 48 teams.', posts: 98234 }
   ],
 
   posts: [
@@ -459,8 +738,8 @@ const DATA = {
         'Liverpool were brilliant on the night. Salah was exceptional, Van Dijk was a colossus, and the whole team played with an intensity that was breathtaking.',
         'Moments like this are why we are the most passionate fans in the world. YNWA 🔴'
       ],
-      image: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=600&h=350&fit=crop',
-      thumb: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=80&h=80&fit=crop',
+      image: 'https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=600&h=350&fit=crop',
+      thumb: 'https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=80&h=80&fit=crop',
       likes: 4521,
       comments: 312,
       shares: 567,
@@ -483,8 +762,8 @@ const DATA = {
         'Bayern Munich will face PSG in what promises to be a tactical masterclass, while Chelsea take on Barcelona in a thrilling London vs Catalonia showdown.',
         'The ties will be played over two legs across 11th and 18th June, with the semi-final draw to follow immediately after.'
       ],
-      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=350&fit=crop',
-      thumb: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=80&h=80&fit=crop',
+      image: 'https://images.unsplash.com/photo-1522778526097-ce0a22cdbec6?w=600&h=350&fit=crop',
+      thumb: 'https://images.unsplash.com/photo-1522778526097-ce0a22cdbec6?w=80&h=80&fit=crop',
       likes: 3421,
       comments: 445,
       shares: 891,
@@ -530,8 +809,8 @@ const DATA = {
         'The scary thing? He\'s only going to get better. His physical development, his tactical understanding — all of it will improve over the next 3-4 years.',
         'Culers, we are witnessing something special. Cherish every game. 💙❤️'
       ],
-      image: 'https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=600&h=350&fit=crop',
-      thumb: 'https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=80&h=80&fit=crop',
+      image: 'https://images.unsplash.com/photo-1551958425-d6f73800d376?w=600&h=350&fit=crop',
+      thumb: 'https://images.unsplash.com/photo-1551958425-d6f73800d376?w=80&h=80&fit=crop',
       likes: 6234,
       comments: 892,
       shares: 1234,
@@ -600,8 +879,8 @@ const DATA = {
         'The 30-year-old striker, who joined Bayern from Tottenham in a €100m deal, has silenced all doubters who questioned whether he could adapt to a new league.',
         'Mia san Mia — and Harry Kane is now one of us. 🔴'
       ],
-      image: 'https://images.unsplash.com/photo-1565974498891-5d5e7a1bfe25?w=600&h=350&fit=crop',
-      thumb: 'https://images.unsplash.com/photo-1565974498891-5d5e7a1bfe25?w=80&h=80&fit=crop',
+      image: 'https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=600&h=350&fit=crop',
+      thumb: 'https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=80&h=80&fit=crop',
       likes: 5234,
       comments: 567,
       shares: 891,
@@ -665,7 +944,42 @@ const DATA = {
       atmosphereRating: 8.7,
       communityBuzz: 8932
     },
-    // UPCOMING
+    // WC LIVE
+    {
+      id: 'fix-wc-1',
+      homeTeamId: 'brazil-nt',
+      awayTeamId: 'arsenal',  // placeholder — will show as generic if no team
+      homeScore: 1,
+      awayScore: 0,
+      minute: 67,
+      isLive: true,
+      status: 'LIVE',
+      competition: 'World Cup QF — Brazil vs Argentina',
+      competitionShort: 'WC',
+      date: 'Today',
+      time: '20:00',
+      stadium: 'SoFi Stadium, Los Angeles',
+      atmosphereRating: 9.8,
+      communityBuzz: 24830
+    },
+    {
+      id: 'fix-wc-2',
+      homeTeamId: 'england-nt',
+      awayTeamId: 'spain-nt',
+      homeScore: 0,
+      awayScore: 0,
+      minute: 34,
+      isLive: true,
+      status: 'LIVE',
+      competition: 'World Cup SF — England vs Spain',
+      competitionShort: 'WC',
+      date: 'Today',
+      time: '20:00',
+      stadium: 'MetLife Stadium, New York',
+      atmosphereRating: 9.6,
+      communityBuzz: 31204
+    },
+    // CLUB LIVE
     {
       id: 'fix-1',
       homeTeamId: 'liverpool',
@@ -797,6 +1111,107 @@ const DATA = {
     { id: 'gift-2', count: 3, type: 'Ticket', subtype: 'Streaming', color: '#EC4899', color2: '#BE185D' },
     { id: 'gift-3', count: 2, type: 'Voucher', subtype: 'Merchandise', color: '#8B5CF6', color2: '#6D28D9' },
     { id: 'gift-4', count: 1, type: 'VIP', subtype: 'Match Day', color: '#10B981', color2: '#059669' }
+  ],
+
+  conversations: [
+    {
+      id: 'conv-1', type: 'group', name: 'Arsenal Match Day 🔴',
+      avatar: null, teamId: 'arsenal', color: '#EF0107',
+      lastMessage: 'Saka is unreal today 🔥', lastTime: '2m ago', unread: 5,
+      messages: [
+        { id: 'm1', sender: 'KopiteLad', text: 'Anyone watching the Arsenal game?', time: '14:30', isMe: false },
+        { id: 'm2', sender: 'Me', text: 'Yeah! This is going to be massive 🔥', time: '14:31', isMe: true },
+        { id: 'm3', sender: 'Santiago R.', text: 'Saka starting again, lets go!', time: '14:35', isMe: false },
+        { id: 'm4', sender: 'Arsenal_Alex', text: 'The atmosphere at the Emirates is electric today', time: '14:44', isMe: false },
+        { id: 'm5', sender: 'Me', text: 'Fully agree, biggest match of the season', time: '14:45', isMe: true },
+        { id: 'm6', sender: 'Arsenal_Alex', text: 'Saka is unreal today 🔥', time: '14:58', isMe: false }
+      ]
+    },
+    {
+      id: 'conv-2', type: 'dm', name: 'Santiago R.',
+      avatar: null, teamId: 'real-madrid', color: '#7B68EE',
+      lastMessage: 'Hala Madrid! See you at the watchalong', lastTime: '15m ago', unread: 1,
+      messages: [
+        { id: 'm1', sender: 'Santiago R.', text: 'Bro did you see that Bellingham goal?!', time: '13:10', isMe: false },
+        { id: 'm2', sender: 'Me', text: 'Insane finish honestly. World class', time: '13:12', isMe: true },
+        { id: 'm3', sender: 'Santiago R.', text: 'Real Madrid are just built different', time: '13:15', isMe: false },
+        { id: 'm4', sender: 'Me', text: 'Fair play, that squad depth is unreal', time: '13:18', isMe: true },
+        { id: 'm5', sender: 'Santiago R.', text: 'Hala Madrid! See you at the watchalong', time: '13:45', isMe: false }
+      ]
+    },
+    {
+      id: 'conv-3', type: 'community', name: 'UCL Weekly 🏆',
+      avatar: null, teamId: null, color: '#1E3A8A',
+      lastMessage: 'Quarter-final draw is absolutely insane!', lastTime: '1h ago', unread: 23,
+      messages: [
+        { id: 'm1', sender: 'UCL_Reporter', text: 'Quarter-final draw just announced!', time: '11:00', isMe: false },
+        { id: 'm2', sender: 'CuleLoco', text: 'Barcelona vs Chelsea 🔥🔥🔥', time: '11:02', isMe: false },
+        { id: 'm3', sender: 'Me', text: 'Real Madrid vs Arsenal is the tie of the round', time: '11:04', isMe: true },
+        { id: 'm4', sender: 'BayernHero', text: 'PSG vs Bayern again... classic', time: '11:05', isMe: false },
+        { id: 'm5', sender: 'KopiteLad', text: 'Quarter-final draw is absolutely insane!', time: '11:08', isMe: false }
+      ]
+    },
+    {
+      id: 'conv-4', type: 'dm', name: 'Arsenal_Alex',
+      avatar: null, teamId: 'arsenal', color: '#EF0107',
+      lastMessage: 'Arteta is doing something special', lastTime: '2h ago', unread: 0,
+      messages: [
+        { id: 'm1', sender: 'Arsenal_Alex', text: 'Did you read the Arteta interview?', time: '09:30', isMe: false },
+        { id: 'm2', sender: 'Me', text: 'Not yet, what did he say?', time: '09:32', isMe: true },
+        { id: 'm3', sender: 'Arsenal_Alex', text: 'About the UCL preparations. Squad is ready', time: '09:35', isMe: false },
+        { id: 'm4', sender: 'Arsenal_Alex', text: 'Arteta is doing something special', time: '09:36', isMe: false }
+      ]
+    },
+    {
+      id: 'conv-5', type: 'group', name: 'Transfer Window Chat 💰',
+      avatar: null, teamId: null, color: '#7C3AED',
+      lastMessage: 'That €80M deal is basically confirmed now', lastTime: '3h ago', unread: 0,
+      messages: [
+        { id: 'm1', sender: 'TransferGuru', text: 'Big news incoming on the Arsenal deal', time: '08:00', isMe: false },
+        { id: 'm2', sender: 'Me', text: 'The €80M midfielder? Heard good things', time: '08:05', isMe: true },
+        { id: 'm3', sender: 'TransferGuru', text: 'Personal terms agreed apparently', time: '08:10', isMe: false },
+        { id: 'm4', sender: 'James M.', text: 'That €80M deal is basically confirmed now', time: '08:45', isMe: false }
+      ]
+    }
+  ],
+
+  watchalongs: [
+    {
+      id: 'wa-1',
+      homeTeam: 'Arsenal', awayTeam: 'Bayern Munich',
+      competition: 'UCL Quarter-Final', competitionColor: '#1E3A8A',
+      date: 'Wed, Jun 11 · 20:00',
+      result: '2–1', homeWin: true,
+      viewers: 4821, peakViewers: 6234,
+      atmosphereRating: 9.4,
+      communityId: 'arsenal-fc-official',
+      color: '#EF0107',
+      highlights: ['Saka 23\'', 'Havertz 67\'', 'Kane 71\'']
+    },
+    {
+      id: 'wa-2',
+      homeTeam: 'Real Madrid', awayTeam: 'Chelsea',
+      competition: 'UCL Semi-Final', competitionColor: '#1E3A8A',
+      date: 'Tue, Jun 4 · 20:00',
+      result: '3–0', homeWin: true,
+      viewers: 12843, peakViewers: 18921,
+      atmosphereRating: 9.8,
+      communityId: 'los-blancos',
+      color: '#7B68EE',
+      highlights: ['Bellingham 12\'', 'Vinícius 45\'', 'Bellingham 89\'']
+    },
+    {
+      id: 'wa-3',
+      homeTeam: 'Liverpool', awayTeam: 'PSG',
+      competition: 'UCL Quarter-Final', competitionColor: '#1E3A8A',
+      date: 'Wed, May 28 · 20:00',
+      result: '1–1', homeWin: false,
+      viewers: 7654, peakViewers: 9102,
+      atmosphereRating: 8.6,
+      communityId: 'the-kop',
+      color: '#C8102E',
+      highlights: ['Salah 34\'', 'Mbappé 78\'']
+    }
   ]
 
 };
